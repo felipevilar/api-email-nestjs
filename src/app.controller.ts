@@ -1,17 +1,12 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { User } from './user/user.entity';
-
+import { UserDto } from './user/user.dto';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  sendMail(): Promise<void> {
-    const user: User = {
-      email: 'felipe@maisquestoes.com.br',
-      name: 'Felipe',
-    };
+  sendMail(@Body() user: UserDto): Promise<void> {
     return this.appService.signUp(user);
   }
 }

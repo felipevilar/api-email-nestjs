@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { MailService } from './mail/mail.service';
-import { User } from './user/user.entity';
-
+import { UserDto } from './user/user.dto';
 @Injectable()
 export class AppService {
   constructor(private mailService: MailService) {}
 
-  async signUp(user: User) {
+  async signUp(user: UserDto) {
     const token = Math.floor(1000 + Math.random() * 9000).toString();
     // create user in db
     // ...
