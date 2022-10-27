@@ -9,4 +9,9 @@ export class AppController {
   sendMail(@Body() user: UserDto): Promise<void> {
     return this.appService.signUp(user);
   }
+
+  @Post('/external')
+  sendExternal(@Body() user: UserDto): Promise<void> {
+    return this.appService.sendExternal(user);
+  }
 }

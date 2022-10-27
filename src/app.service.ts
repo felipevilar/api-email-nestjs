@@ -12,4 +12,7 @@ export class AppService {
     // send confirmation mail
     await this.mailService.sendUserConfirmation(user, token);
   }
+  async sendExternal(user: UserDto) {
+    await this.mailService.sendWelcomeExternal(user);
+  }
 }
